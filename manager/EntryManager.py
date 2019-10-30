@@ -12,13 +12,15 @@ class EntryManager:
     def __init__(self, entryList=[]):  # default is empty list
         self.entryList = entryList
 
-    """Adds a new entry to the end of the list
+    """
+    Adds a new entry to the end of the list
     :param entry: the new entry to append
     """
     def addEntry(self, entry):
         self.entryList.append(entry)
 
-    """Sets the entry at the given index to 
+    """
+    Sets the entry at the given index to 
     the new entry.
     
     :param newEntry: the new entry to set
@@ -27,7 +29,8 @@ class EntryManager:
     def setEntry(self, newEntry, index):
         self.entryList[index] = newEntry
 
-    """Flips the flag of that entry to opposite
+    """
+    Flips the flag of that entry to opposite
     boolean value.
     
     :param index: the Entry who's flag to flip
@@ -38,7 +41,8 @@ class EntryManager:
         else:
             self.entryList[index].flag = 0
 
-    """Removes an entry from the list
+    """
+    Removes an entry from the list
     
     :param index: the Entry to remove
     """
@@ -47,7 +51,8 @@ class EntryManager:
         if self.entryList[index].flag == 1:
             self.entryList.remove(self.entryList[index])
 
-    """Tests whether or not this Entry Manager is equal to
+    """
+    Tests whether or not this Entry Manager is equal to
     another entry manager.
     
     :param otherEntry:  another entry manager
@@ -63,7 +68,8 @@ class EntryManager:
             isEqual = False
         return isEqual
 
-    """Converts the manager to a readable string format
+    """
+    Converts the manager to a readable string format
     
     :returns managerString: the formatted string
     """
@@ -75,7 +81,8 @@ class EntryManager:
 
         return managerString
 
-    """Passes the entry manager off to the database for
+    """
+    Passes the entry manager off to the database for
     more permanent storage.
     """
     def saveToDB(self):

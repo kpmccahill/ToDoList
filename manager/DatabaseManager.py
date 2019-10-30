@@ -22,7 +22,8 @@ class DatabaseManager:
 
         self.connection = sqlite3.connect(self.dbPath + "Manager.db")
 
-    """Saves the Entry List to the database
+    """
+    Saves the Entry List to the database
     :param entryList: the list from the Entry Manager to save
     """
     def saveManager(self, entryList):
@@ -36,7 +37,8 @@ class DatabaseManager:
                 print(entryList[i].item + entryList[i].dueDate + str(entryList[i].flag))
                 self.cursor.execute("INSERT INTO Manager VALUES (?, ?, ?)", (entryList[i].item, entryList[i].dueDate, entryList[i].flag))
 
-    """Loads the database into list format, and formats it before returning to
+    """
+    Loads the database into list format, and formats it before returning to
     the EntryManager
     
     :returns: the entryList for an EntryManager object

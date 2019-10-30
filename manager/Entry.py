@@ -10,14 +10,16 @@ class Entry:
         self.dueDate = dDate
         self.flag = 0
 
-    """Converts the Entry into a string
+    """
+    Converts the Entry into a string
     :returns: Full string of the Entry 
     """
     def to_string(self):
         entryString = "Task: " + self.item + " | Due: " + self.dueDate
         return entryString
 
-    """Tests whether or not this Entry is equal to
+    """
+    Tests whether or not this Entry is equal to
     another Entry.
 
     :param otherEntry:  another Entry class
