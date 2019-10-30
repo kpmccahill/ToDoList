@@ -1,7 +1,6 @@
 """
 Class that handles adding all entries to the database for
-permanent storage, and retrieving them from permanent storage
-on launch.
+permanent storage, and retrieving them from permanent storage.
 
 :author: Kyle McCahill
 """

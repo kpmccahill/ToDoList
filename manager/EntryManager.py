@@ -1,11 +1,11 @@
 """
 Defines the Manager class. Which handles the runtime
 modification and storage of the entries, by storing them
-in a list
+in a list.
 
 :author: Kyle McCahill
 """
-from manager.Entry import Entry
+
 from manager.DatabaseManager import DatabaseManager
 
 class EntryManager:
