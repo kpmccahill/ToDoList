@@ -33,7 +33,7 @@ class MyTestCase(unittest.TestCase):
                                       Entry("Task2", "DateDue")])
 
         check_manager = EntryManager([Entry("Task2", "DateDue")])
-        
+
         entry_manager.removeEntry(0)
         self.assertFalse(entry_manager.equals(check_manager))
 
