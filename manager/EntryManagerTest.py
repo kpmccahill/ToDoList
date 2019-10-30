@@ -33,11 +33,11 @@ class MyTestCase(unittest.TestCase):
                                       Entry("Task2", "DateDue")])
 
         check_manager = EntryManager([Entry("Task2", "DateDue")])
-        print("noflag")
+        
         entry_manager.removeEntry(0)
         self.assertFalse(entry_manager.equals(check_manager))
 
-        print("flag")
+
         entry_manager.flip_flag(0)
         entry_manager.removeEntry(0)
 

@@ -18,11 +18,11 @@ class Entry:
         return entryString
 
     """Tests whether or not this Entry is equal to
-        another Entry.
+    another Entry.
 
-        :param otherEntry:  another Entry class
-        :returns: true if equal to each other
-        """
+    :param otherEntry:  another Entry class
+    :returns: true if equal to each other
+    """
     def equals(self, otherEntry):
         isEqual = True
         if (self.item != otherEntry.item) or (self.dueDate != otherEntry.dueDate):
