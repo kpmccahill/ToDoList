@@ -1,5 +1,7 @@
-"""Defines the Entry class. Which contains all info
+"""
+Defines the Entry class. Which contains all info
 that each task entry has.
+
 :author: Kyle McCahill
 """
 
@@ -12,6 +14,7 @@ class Entry:
 
     """
     Converts the Entry into a string
+    
     :returns: Full string of the Entry 
     """
     def to_string(self):

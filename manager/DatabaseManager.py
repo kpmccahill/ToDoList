@@ -1,4 +1,5 @@
-"""Class that handles adding all entries to the database for
+"""
+Class that handles adding all entries to the database for
 permanent storage, and retrieving them from permanent storage
 on launch.
 
@@ -24,6 +25,7 @@ class DatabaseManager:
 
     """
     Saves the Entry List to the database
+    
     :param entryList: the list from the Entry Manager to save
     """
     def saveManager(self, entryList):

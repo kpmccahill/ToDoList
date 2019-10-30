@@ -1,4 +1,5 @@
-"""Defines the Manager class. Which handles the runtime
+"""
+Defines the Manager class. Which handles the runtime
 modification and storage of the entries, by storing them
 in a list
 
@@ -14,6 +15,7 @@ class EntryManager:
 
     """
     Adds a new entry to the end of the list
+    
     :param entry: the new entry to append
     """
     def addEntry(self, entry):
