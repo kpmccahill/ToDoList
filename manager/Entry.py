@@ -8,7 +8,7 @@ class Entry:
     def __init__(self, item, dDate):
         self.item = item
         self.dueDate = dDate
-        self.flag = False
+        self.flag = 0
 
     """Converts the Entry into a string
     :returns: Full string of the Entry 
@@ -29,6 +29,7 @@ class Entry:
             isEqual = False
 
         return isEqual
+
 
 if __name__ == "__main__":
     entry = Entry("Task", "DueDate")

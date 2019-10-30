@@ -4,8 +4,8 @@ in a list
 
 :author: Kyle McCahill
 """
-from manager import Entry
-
+from manager.Entry import Entry
+from manager.DatabaseManager import DatabaseManager
 
 class EntryManager:
 
@@ -33,10 +33,10 @@ class EntryManager:
     :param index: the Entry who's flag to flip
     """
     def flip_flag(self, index):
-        if not self.entryList[index].flag:
-            self.entryList[index].flag = True
+        if not self.entryList[index].flag == 1:
+            self.entryList[index].flag = 1
         else:
-            self.entryList[index].flag = False
+            self.entryList[index].flag = 0
 
     """Removes an entry from the list
     
@@ -44,7 +44,7 @@ class EntryManager:
     """
     def removeEntry(self, index):
         print(self.entryList[index].to_string() + str(self.entryList[index].flag))
-        if self.entryList[index].flag == True:
+        if self.entryList[index].flag == 1:
             self.entryList.remove(self.entryList[index])
 
     """Tests whether or not this Entry Manager is equal to
@@ -74,3 +74,16 @@ class EntryManager:
             managerString += self.entryList[i].to_string() + NEWLINE
 
         return managerString
+
+    """Passes the entry manager off to the database for
+    more permanent storage.
+    """
+    def saveToDB(self):
+        dbMan = DatabaseManager()
+        dbMan.saveManager(self.entryList)
+
+    """Loads the entryList from storage"""
+    def loadDB(self):
+        dbMan = DatabaseManager()
+        self.entryList = dbMan.loadManager()
+
