@@ -17,8 +17,6 @@ class DatabaseManager:
 
         if not os.path.exists(self.dbPath):
             os.makedirs(self.dbPath)
-        else:
-            print("Yeeeee")
 
         self.connection = sqlite3.connect(self.dbPath + "Manager.db")
 
