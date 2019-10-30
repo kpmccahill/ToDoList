@@ -95,4 +95,3 @@ class EntryManager:
     def loadDB(self):
         dbMan = DatabaseManager()
         self.entryList = dbMan.loadManager()
-
