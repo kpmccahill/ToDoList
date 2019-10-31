@@ -3,7 +3,7 @@ from manager.Entry import Entry
 from manager.EntryManager import EntryManager
 
 
-class MyTestCase(unittest.TestCase):
+class EntryManagerTest(unittest.TestCase):
 
     def test_add(self):
         entry_manager = EntryManager()
