@@ -33,7 +33,6 @@ class DatabaseManager:
             self.cursor.execute("CREATE TABLE Manager (Item TEXT, Due TEXT, Flag INTEGER)")
 
             for i in range(len(entryList)):
-                print(entryList[i].item + entryList[i].dueDate + str(entryList[i].flag))
                 self.cursor.execute("INSERT INTO Manager VALUES (?, ?, ?)", (entryList[i].item, entryList[i].dueDate, entryList[i].flag))
 
     """
