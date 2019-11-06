@@ -19,6 +19,9 @@ class DatabaseManager:
             os.makedirs(self.dbPath)
 
         self.connection = sqlite3.connect(self.dbPath + "Manager.db")
+        with self.connection:
+            self.cursor = self.connection.cursor()
+            self.cursor.execute("CREATE TABLE IF NOT EXISTS Manager (Item TEXT, Due TEXT)")
 
     """
     Saves the Entry List to the database
@@ -30,10 +33,10 @@ class DatabaseManager:
         with self.connection:
             self.cursor = self.connection.cursor()
             self.cursor.execute("DROP TABLE IF EXISTS Manager")
-            self.cursor.execute("CREATE TABLE Manager (Item TEXT, Due TEXT, Flag INTEGER)")
+            self.cursor.execute("CREATE TABLE Manager (Item TEXT, Due TEXT)")
 
             for i in range(len(entryList)):
-                self.cursor.execute("INSERT INTO Manager VALUES (?, ?, ?)", (entryList[i].item, entryList[i].dueDate, entryList[i].flag))
+                self.cursor.execute("INSERT INTO Manager VALUES (?, ?)", (entryList[i].item, entryList[i].dueDate))
 
     """
     Loads the database into list format, and formats it before returning to

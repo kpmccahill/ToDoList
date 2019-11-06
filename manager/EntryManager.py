@@ -6,12 +6,14 @@ in a list.
 :author: Kyle McCahill
 """
 
+
 from manager.DatabaseManager import DatabaseManager
 
 class EntryManager:
 
     def __init__(self, entryList=[]):  # default is empty list
         self.entryList = entryList
+
 
     """
     Adds a new entry to the end of the list
@@ -46,12 +48,16 @@ class EntryManager:
     """
     Removes an entry from the list
     
-    :param index: the Entry to remove
+    TODO: This needs to be rewritten to be more modular,
+    currently its for the ListWidget implementation, needs
+    to work with the TableView implementation.
+    
+    :param entry: the Entry to remove
     """
-    def removeEntry(self, index):
-        print(self.entryList[index].to_string() + str(self.entryList[index].flag))
-        if self.entryList[index].flag == 1:
-            self.entryList.remove(self.entryList[index])
+    def removeEntry(self, entry):
+        for i in range(len(self.entryList)):
+            if self.entryList[i].to_string() == entry:
+                self.entryList.remove(self.entryList[i])
 
     """
     Tests whether or not this Entry Manager is equal to
@@ -60,6 +66,7 @@ class EntryManager:
     :param otherEntry:  another entry manager
     :returns: true if equal to each other
     """
+
     def equals(self, otherManager):
         isEqual = True
         if len(self.entryList) == len(otherManager.entryList):
