@@ -23,7 +23,7 @@ class MainWindow(QWidget):
         super().__init__()
 
         self.setWindowTitle('To Do List')
-        self.setGeometry(500, 500, 400, 450)
+        self.setGeometry(500, 500, 385, 450)
 
         self.manager = EntryManager()
         self.manager.loadDB()       # loads and initializes the sqlite db if it doesn't exist
