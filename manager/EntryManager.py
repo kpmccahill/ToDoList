@@ -9,11 +9,11 @@ in a list.
 
 from manager.DatabaseManager import DatabaseManager
 
+
 class EntryManager:
 
     def __init__(self, entryList=[]):  # default is empty list
         self.entryList = entryList
-
 
     """
     Adds a new entry to the end of the list
@@ -36,6 +36,8 @@ class EntryManager:
     """
     Flips the flag of that entry to opposite
     boolean value.
+    
+    !!! Might be deprecated !!!
     
     :param index: the Entry who's flag to flip
     """
