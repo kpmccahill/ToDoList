@@ -12,20 +12,21 @@ from manager.EntryManager import EntryManager
 from PyQt5 import QtCore, QtGui
 from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout,
                              QTableView, QPushButton, QListWidget, QInputDialog,
-                             QListWidgetItem, QStatusBar)
+                             QListWidgetItem, QStatusBar, QToolBar)
 
 
 # TODO: Clean up init and break into methods
 # TODO: Add status and info messages with QLabels <------
+# TODO: CLEAN UP THE INIT ITS SO BAD
 class MainWindow(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__()
 
         self.setWindowTitle('To Do List')
-        self.setGeometry(500, 500, 325, 450)
+        self.setGeometry(500, 500, 400, 450)
 
         self.manager = EntryManager()
-        self.manager.loadDB()
+        self.manager.loadDB()       # loads and initializes the sqlite db if it doesn't exist
 
         vBox = QVBoxLayout()
 
@@ -36,26 +37,34 @@ class MainWindow(QWidget):
 
         hBox = QHBoxLayout()
 
-        addButton = QPushButton("Add Task", self)
+        addButton = QPushButton("Add", self)
         addButton.clicked.connect(self.__addTask)
 
-        removeButton = QPushButton("Remove Task", self)
+        removeButton = QPushButton("Remove", self)
         removeButton.clicked.connect(self.__removeTask)
 
         saveButton = QPushButton("Save")
         saveButton.clicked.connect(self.__saveList)
 
         self.statusBar = QStatusBar()
+        self.toolbar = QToolBar()
+
+        self.toolbar.addWidget(saveButton)
+        self.toolbar.addWidget(addButton)
+        self.toolbar.addWidget(removeButton)
+
+        self.toolbar.addWidget(self.statusBar)
 
         self.__setStyling()
 
-        vBox.addLayout(hBox)
-        hBox.addWidget(saveButton)
-        hBox.addWidget(addButton)
-        hBox.addWidget(removeButton)
+        vBox.addWidget(self.toolbar)
+        # vBox.addLayout(hBox)
+        # #hBox.addWidget(saveButton)
+        # hBox.addWidget(addButton)
+        # hBox.addWidget(removeButton)
 
         vBox.addWidget(self.taskView)
-        vBox.addWidget(self.statusBar)
+
 
         self.setLayout(vBox)
 
@@ -74,8 +83,10 @@ class MainWindow(QWidget):
         statusFont = font
         statusFont.setPointSize(9)
         self.statusBar.setFont(font)
-        self.statusBar.setStyleSheet("color: red")
         self.statusBar.setSizeGripEnabled(False)
+
+        self.toolbar.setStyleSheet("QToolBar{spacing: 5px;}")
+
 
     """Adds a new entry to the entry manager"""
     def __addTask(self):
@@ -95,7 +106,7 @@ class MainWindow(QWidget):
             self.statusBar.showMessage("Removed", MESSAGE_TIME)
         except Exception:
             logging.error('Error nothing was selected')
-            self.statusBar.showMessage("Error: Nothing was selected", MESSAGE_TIME)
+            self.statusBar.showMessage("Error: No selection", MESSAGE_TIME)
 
     """Saves the list of tasks to the database"""
     def __saveList(self):
