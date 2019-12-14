@@ -35,8 +35,6 @@ class MainWindow(QWidget):
         # this will make it so that when an item in the list is clicked it is removed immediately.
         # self.taskView.clicked.connect(self.__removeTask)
 
-        hBox = QHBoxLayout()
-
         addButton = QPushButton("Add", self)
         addButton.clicked.connect(self.__addTask)
 
@@ -58,13 +56,7 @@ class MainWindow(QWidget):
         self.__setStyling()
 
         vBox.addWidget(self.toolbar)
-        # vBox.addLayout(hBox)
-        # #hBox.addWidget(saveButton)
-        # hBox.addWidget(addButton)
-        # hBox.addWidget(removeButton)
-
         vBox.addWidget(self.taskView)
-
 
         self.setLayout(vBox)
 
