@@ -31,27 +31,13 @@ class MainWindow(QWidget):
         vBox = QVBoxLayout()
 
         self.taskView = QListWidget()
-
         # this will make it so that when an item in the list is clicked it is removed immediately.
         # self.taskView.clicked.connect(self.__removeTask)
-
-        addButton = QPushButton("Add", self)
-        addButton.clicked.connect(self.__addTask)
-
-        removeButton = QPushButton("Remove", self)
-        removeButton.clicked.connect(self.__removeTask)
-
-        saveButton = QPushButton("Save")
-        saveButton.clicked.connect(self.__saveList)
 
         self.statusBar = QStatusBar()
         self.toolbar = QToolBar()
 
-        self.toolbar.addWidget(saveButton)
-        self.toolbar.addWidget(addButton)
-        self.toolbar.addWidget(removeButton)
-
-        self.toolbar.addWidget(self.statusBar)
+        self.__setupToolbar()
 
         self.__setStyling()
 
@@ -64,6 +50,23 @@ class MainWindow(QWidget):
         self.__redrawTaskView()
 
         self.show()
+
+    """Sets up the QToolBar widget at the top of the window."""
+    def __setupToolbar(self):
+        addButton = QPushButton("Add", self)
+        addButton.clicked.connect(self.__addTask)
+
+        removeButton = QPushButton("Remove", self)
+        removeButton.clicked.connect(self.__removeTask)
+
+        saveButton = QPushButton("Save")
+        saveButton.clicked.connect(self.__saveList)
+
+        self.toolbar.addWidget(saveButton)
+        self.toolbar.addWidget(addButton)
+        self.toolbar.addWidget(removeButton)
+
+        self.toolbar.addWidget(self.statusBar)
 
     """Establishes the styling and formatting of mainly the tableView"""
     def __setStyling(self):
@@ -78,7 +81,6 @@ class MainWindow(QWidget):
         self.statusBar.setSizeGripEnabled(False)
 
         self.toolbar.setStyleSheet("QToolBar{spacing: 5px;}")
-
 
     """Adds a new entry to the entry manager"""
     def __addTask(self):
@@ -96,7 +98,7 @@ class MainWindow(QWidget):
             self.manager.removeEntry(self.taskView.currentItem().text())
             self.__redrawTaskView()
             self.statusBar.showMessage("Removed", MESSAGE_TIME)
-        except Exception:
+        except Exception:   # bad but cant find the exception to catch here
             logging.error('Error nothing was selected')
             self.statusBar.showMessage("Error: No selection", MESSAGE_TIME)
 
