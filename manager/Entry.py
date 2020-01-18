@@ -18,7 +18,7 @@ class Entry:
     :returns: Full string of the Entry 
     """
     def to_string(self):
-        entryString = "Task: " + self.item + " | Due: " + self.dueDate
+        entryString = self.item + " | " + self.dueDate
         return entryString
 
     """
